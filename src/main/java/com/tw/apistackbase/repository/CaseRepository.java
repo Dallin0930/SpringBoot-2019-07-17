@@ -15,5 +15,8 @@ public interface CaseRepository extends JpaRepository {
     List<Case> findAllOrderByCaseTimeDesc();
 
     @Query(" update case c set caseDetail = ? where caseName = ? ")
-    int updateCaseByCaseName(String caseName);
+    int updateCaseCaseDetailByCaseName(String caseName);
+
+    @Query(" update case c set procuratorate = ? where caseName = ? ")
+    int updateCaseProcuratorateInfoByCaseName(String caseName);
 }

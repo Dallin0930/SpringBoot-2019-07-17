@@ -90,17 +90,25 @@ public  class CaseRepositoryTest {
     @Test
     @Transactional
     public int should_return_update_count_by_caseName(){
-       return caseRepository.updateCaseByCaseName("caseA");
+       return caseRepository.updateCaseCaseDetailByCaseName("caseA");
     }
 
     @Test
-    public void should_return_newCases_when_add_procuratorate(){
+    public void should_return_newCases_when_add_procuratorate_with_caseDetail(){
         Case newCase = new Case("caseD",111111111);
         Procuratorate procuratorate = new Procuratorate("ProcuratorateD");
         newCase.setProcuratorate(procuratorate);
         Case caseSaved = (Case) caseRepository.save(newCase);
         Assert.assertEquals(caseSaved.getProcuratorate().getProcuratorateName(),"ProcuratorateD");
     }
+
+    @Test
+    @Transactional
+    public int should_return_update_count_by_caseName_with_procuratorate_info(){
+        return caseRepository.updateCaseProcuratorateInfoByCaseName("caseA");
+    }
+
+
 
 
 
