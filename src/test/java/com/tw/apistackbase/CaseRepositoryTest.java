@@ -1,7 +1,9 @@
 package com.tw.apistackbase;
 
 import com.tw.apistackbase.beans.Case;
+import com.tw.apistackbase.beans.CaseDetail;
 import com.tw.apistackbase.repository.CaseRepository;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
 @RunWith(SpringRunner.class)
@@ -62,12 +65,24 @@ public  class CaseRepositoryTest {
     }
 
     @Test
+    @Transactional
     public ResponseEntity<List<Case>> should_return_all_cases_when_delete_by_id()
     {
         caseRepository.deleteById(1);
         List<Case> fetchedCases = caseRepository.findAll();
         return ResponseEntity.ok(fetchedCases);
     }
+
+    @Test
+    public void should_return_newCases_when_add_caseDetail(){
+        Case newCase = new Case("caseD",111111111);
+        CaseDetail caseDetail = new CaseDetail("subjectiveDetailD","objectiveDetailD");
+        newCase.setCaseDetail(caseDetail);
+       Case caseSaved = (Case) caseRepository.save(newCase);
+        Assert.assertEquals(caseSaved.getCaseDetail().getObjectiveDetail(),"subjectiveDetailD");
+    }
+
+
 
 
 

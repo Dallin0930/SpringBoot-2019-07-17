@@ -9,10 +9,30 @@ public class Case {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
+
     @Column(length = 255,nullable = false)
     private String caseName;
+
     @Column(nullable = false)
     private long caseTime;
+
+    @OneToOne(cascade= CascadeType.ALL, fetch= FetchType.LAZY)
+    @JoinColumn(referencedColumnName = "id")
+    private CaseDetail caseDetail;
+
+    public void setCaseDetail(CaseDetail caseDetail) {
+        this.caseDetail = caseDetail;
+    }
+
+    public CaseDetail getCaseDetail() {
+        return caseDetail;
+    }
+
+    public Case(String caseName, long caseTime, CaseDetail caseDetail) {
+        this.caseName = caseName;
+        this.caseTime = caseTime;
+        this.caseDetail = caseDetail;
+    }
 
     public Case()
     {

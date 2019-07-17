@@ -43,4 +43,6 @@ public class CaseDetailRepositoryTest {
         Optional caseDetail = caseRepository.findById(1);
         Assert.assertNotEquals(null,caseDetail.get());
     }
+
+
 }
