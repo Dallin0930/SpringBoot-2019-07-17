@@ -1,6 +1,7 @@
 package com.tw.apistackbase;
 
 import com.tw.apistackbase.beans.Case;
+import com.tw.apistackbase.repository.CaseRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.*;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public  class RepositoryTest  {
+public  class CaseRepositoryTest {
     public Long returnSeconds(int year, int month, int date) {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         calendar.clear();

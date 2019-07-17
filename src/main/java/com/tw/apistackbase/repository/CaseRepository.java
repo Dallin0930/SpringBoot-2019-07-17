@@ -1,4 +1,4 @@
-package com.tw.apistackbase;
+package com.tw.apistackbase.repository;
 
 import com.tw.apistackbase.beans.Case;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,12 +1,10 @@
 package com.tw.apistackbase.controller;
 
-import com.tw.apistackbase.Employee;
 //import com.tw.apistackbase.beans.Company;
 //import com.tw.apistackbase.beans.Employee;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+        import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,14 +1,11 @@
 package com.tw.apistackbase.controller;
 
 
-import com.tw.apistackbase.Company;
-import com.tw.apistackbase.Employee;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
