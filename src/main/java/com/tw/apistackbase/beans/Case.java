@@ -1,50 +1,50 @@
 package com.tw.apistackbase.beans;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Case {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
-    private String name;
-    private long time;
+    @Column(length = 255,nullable = false)
+    private String caseName;
+    @Column(nullable = false)
+    private long caseTime;
 
     public Case()
     {
 
     }
 
-    public Case(String name, long time) {
-        this.name = name;
-        this.time = time;
-    }
-
-    public String getId() {
-        return id;
+    public Case(String caseName, long caseTime) {
+        this.caseName = caseName;
+        this.caseTime = caseTime;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public void setCaseName(String caseName) {
+        this.caseName = caseName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCaseTime(long caseTime) {
+        this.caseTime = caseTime;
     }
 
-    public long getTime() {
-        return time;
+    public String getId() {
+        return id;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public String getCaseName() {
+        return caseName;
+    }
+
+    public long getCaseTime() {
+        return caseTime;
     }
 }
