@@ -1,6 +1,7 @@
 package com.tw.apistackbase;
 
 import com.tw.apistackbase.beans.Justice;
+import com.tw.apistackbase.beans.Procuratorate;
 import com.tw.apistackbase.repository.JusticeRepository;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -36,6 +37,9 @@ public class JusticeRepositoryTest {
         Optional fetchedJustice = justiceRepository.findById(1);
         return ResponseEntity.ok(fetchedJustice);
     }
+
+
+
 
 
 }

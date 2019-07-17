@@ -1,8 +1,7 @@
 package com.tw.apistackbase.beans;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 public class Procuratorate {
 
@@ -12,6 +11,23 @@ public class Procuratorate {
 
     @Column(length = 50,unique = true)
     private String procuratorateName;
+
+    @OneToMany(cascade= CascadeType.ALL, fetch= FetchType.LAZY)
+    @JoinColumn(referencedColumnName = "id")
+    private List<Justice> justices;
+
+    public void setJustices(List<Justice> justices) {
+        this.justices = justices;
+    }
+
+    public List<Justice> getJustices() {
+        return justices;
+    }
+
+    public Procuratorate(String procuratorateName, List<Justice> justices) {
+        this.procuratorateName = procuratorateName;
+        this.justices = justices;
+    }
 
     public Procuratorate() {
 

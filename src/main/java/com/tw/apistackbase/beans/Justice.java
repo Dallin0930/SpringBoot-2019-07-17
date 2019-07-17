@@ -1,10 +1,8 @@
 package com.tw.apistackbase.beans;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Justice {
@@ -15,6 +13,13 @@ public class Justice {
 
     @Column(nullable = false,length = 255)
     private String justiceName;
+
+
+
+    public String getJusticeName() {
+        return justiceName;
+    }
+
 
     public void setId(String id) {
         this.id = id;
