@@ -4,6 +4,7 @@ import com.tw.apistackbase.beans.Case;
 import com.tw.apistackbase.beans.CaseDetail;
 import com.tw.apistackbase.repository.CaseRepository;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +29,20 @@ public  class CaseRepositoryTest {
     @Autowired
     CaseRepository caseRepository;
 
+    @Before
+    private void setUp() {
+        List<Case> cases =new ArrayList<>();
+        Case caseOne=new Case("caseA",returnSeconds(2018,9,2));
+        Case caseTwo=new Case("caseB",returnSeconds(2008,9,2));
+        Case caseThree=new Case("caseC",returnSeconds(2015,9,2));
+        cases.add(caseOne);
+        cases.add(caseTwo);
+        cases.add(caseThree);
+        caseRepository.saveAll(cases);
+    }
    @Test
     public ResponseEntity<List<Case>> should_return_CaseList_when_add_Case()
    {
-       List<Case> cases =new ArrayList<>();
-       Case caseOne=new Case("caseA",returnSeconds(2018,9,2));
-       Case caseTwo=new Case("caseB",returnSeconds(2008,9,2));
-       Case caseThree=new Case("caseC",returnSeconds(2015,9,2));
-       cases.add(caseOne);
-       cases.add(caseTwo);
-       cases.add(caseThree);
-       caseRepository.saveAll(cases);
        List<Case> allCases = caseRepository.findAll();
        return ResponseEntity.ok(allCases);
    }
@@ -80,6 +84,12 @@ public  class CaseRepositoryTest {
         newCase.setCaseDetail(caseDetail);
        Case caseSaved = (Case) caseRepository.save(newCase);
         Assert.assertEquals(caseSaved.getCaseDetail().getObjectiveDetail(),"subjectiveDetailD");
+    }
+
+    @Test
+    @Transactional
+    public int should_return_update_count_by_caseName(){
+       return caseRepository.updateCaseByCaseName("caseA");
     }
 
 
