@@ -20,6 +20,31 @@ public class Case {
     @JoinColumn(referencedColumnName = "id")
     private CaseDetail caseDetail;
 
+    @OneToOne(cascade= CascadeType.ALL, fetch= FetchType.LAZY)
+    @JoinColumn(referencedColumnName = "id")
+    private Procuratorate procuratorate;
+
+    public Case(String caseName, long caseTime, Procuratorate procuratorate) {
+        this.caseName = caseName;
+        this.caseTime = caseTime;
+        this.procuratorate = procuratorate;
+    }
+
+    public void setProcuratorate(Procuratorate procuratorate) {
+        this.procuratorate = procuratorate;
+    }
+
+    public Procuratorate getProcuratorate() {
+        return procuratorate;
+    }
+
+    public Case(String caseName, long caseTime, CaseDetail caseDetail, Procuratorate procuratorate) {
+        this.caseName = caseName;
+        this.caseTime = caseTime;
+        this.caseDetail = caseDetail;
+        this.procuratorate = procuratorate;
+    }
+
     public void setCaseDetail(CaseDetail caseDetail) {
         this.caseDetail = caseDetail;
     }
