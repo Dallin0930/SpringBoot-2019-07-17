@@ -53,6 +53,15 @@ public  class RepositoryTest  {
         return ResponseEntity.ok(fetchedCases);
     }
 
+    @Test
+    public ResponseEntity<List<Case>> should_return_all_cases_order_by_caseTime()
+    {
+        List<Case> fetchedCases = caseRepository.findByCaseName("caseA");
+        return ResponseEntity.ok(fetchedCases);
+    }
+
+
+
 
 
 
