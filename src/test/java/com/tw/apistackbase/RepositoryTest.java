@@ -60,6 +60,14 @@ public  class RepositoryTest  {
         return ResponseEntity.ok(fetchedCases);
     }
 
+    @Test
+    public ResponseEntity<List<Case>> should_return_all_cases_when_delete_by_id()
+    {
+        caseRepository.deleteById(1);
+        List<Case> fetchedCases = caseRepository.findAll();
+        return ResponseEntity.ok(fetchedCases);
+    }
+
 
 
 
