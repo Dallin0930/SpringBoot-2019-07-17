@@ -47,10 +47,10 @@ public  class RepositoryTest  {
     }
 
     @Test
-    public ResponseEntity<Case> should_return_case_by_caseName()
+    public ResponseEntity<List<Case>> should_return_case_by_caseName()
     {
-        Case fetchedCase = caseRepository.findByCaseName("caseA");
-        return ResponseEntity.ok(fetchedCase);
+        List<Case> fetchedCases = caseRepository.findByCaseName("caseA");
+        return ResponseEntity.ok(fetchedCases);
     }
 
 

@@ -10,5 +10,5 @@ import java.util.Optional;
 
 
 public interface CaseRepository extends JpaRepository {
-    Case findByCaseName(String caseA);
+    List<Case> findByCaseName(String caseA);
 }
